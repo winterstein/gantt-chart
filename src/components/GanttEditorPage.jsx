@@ -59,7 +59,7 @@ const GanttRow = ({line, times, wpwidth}) => {
 	let wp = bits[0];
 	wp = wp.replace('->', '→');
 	let twidth = (80 / times.length)+'%';
-	let ons = times.map(t => <td key={t} style={{width:twidth}} className={line.indexOf(t)===-1? '' : 'gantt-on'}></td>);
+	let ons = times.map(t => <td key={t} style={{width:twidth}} className={bits[1] && bits[1].match(new RegExp("\\b"+t+"\\b"))? 'gantt-on' : ''}></td>);
 	return (<tr>
 		<td style={{width:wpwidth}} dangerouslySetInnerHTML={{__html: wp}} />
 		{ons}
